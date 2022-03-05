@@ -19,3 +19,28 @@ void bbSort ( int data[], int aSize){
     }while( nchanges > 0);
     return;
 };
+
+void qsort(int data[], int left, int right){
+    if (right <=1) return;
+    int tmp;
+    int pivot = data[(left+right)/2];
+    int i=left-1, j = right+1;
+
+    while (1){
+        while(pivot > data[++i]);
+        while(pivot < data[--j]);
+
+        if (i <= j){
+            // tmp=data[i];
+            // data[i]=data[j];
+            // data[j]=tmp;
+            std::swap(data[i], data[j]);
+        }
+        else{
+            break;
+        }
+    }
+    if(j > left) qsort(data, left, j);
+    if(i < right) qsort(data, i, right);
+return;
+};
