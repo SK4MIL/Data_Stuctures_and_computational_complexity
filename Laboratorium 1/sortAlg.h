@@ -1,1 +1,6 @@
-void bbSort ( int data[], int size)
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include <string>
+
+void bbSort ( int data[], int aSize);

@@ -1,22 +1,21 @@
 #include "sortAlg.h"
-#include <iostream>
 
-void bbSort ( int data[], int size){
-    if (size <=1) return;
-
-    int nchanges=0;
+void bbSort ( int data[], int aSize){
+    if (aSize <=1) return;
+    int nchanges;
+    int tmp;
     do{
-        int tmp;
-        for (int i=0; i<size; i++){
+        nchanges=0;
+        for (int i=0; i<aSize; i++){
             if (data[i] > data[i+1]){
                 // if first number is greater, change their places
                 tmp = data[i];
-                data[i]=data[i+1];
-                data[i+1]=tmp;
-                nchanges++; 
+                data[i] = data[i+1];
+                data[i+1] = tmp;
+                nchanges++;
             }
         }
+        aSize--;
     }while( nchanges > 0);
-
     return;
-}
+};
