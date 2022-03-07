@@ -2,6 +2,9 @@
 #include <fstream>
 #include <time.h>
 #include <string>
+using namespace std;
 
 void bbSort ( int data[], int aSize);
-void qsort(int data[], int left, int right);
+void insertsort (int data[], int aSize);
+void qsort(int data[], int firstNumber, int lastNumber);
+void mgsort(int data[], int aSize);
