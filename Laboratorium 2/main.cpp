@@ -9,13 +9,18 @@ int main(){
 
     int * toSort = new int[1000000];
     // time
-    time_t start, t_end;
+    time_t start, end;
     double meanRunTime = 0.0;
 
     ofstream outFile;
+    ifstream f;
+    f.open(TIME_FILE);
     outFile.open(TIME_FILE,ios::app);
     if(!outFile.is_open()){cout<<"ERROR: outFile\n"; return -1;};
-    outFile << "Zakres, Czas trwania, Liczba iteracji"<< endl;  
+    if (!f){
+        outFile << "Zakres, Czas trwania, Liczba iteracji"<< endl;  
+    }
+    f.close();
     // for (int r =13; r <=16; r++){
     for (int r = 16; r >= 0; r--){
         for (int i = 0; i < N_RUNS; i++)
@@ -43,9 +48,9 @@ int main(){
 
         mixedBucket(toSort, RANGE[r]);
 
-        time(&t_end);
+        time(&end);
 
-        meanRunTime += double(t_end - start);
+        meanRunTime += double(end - start);
         }
     meanRunTime = double(meanRunTime/N_RUNS);
 

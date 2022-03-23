@@ -17,6 +17,7 @@ void bbSort ( int data[], int aSize){
     }while( nchanges > 0);
     return;
 };
+
 void insersort(std::vector<int> data, int aSize){
     int key;
     for (int i = 1; i <= aSize; i++){
@@ -29,6 +30,7 @@ void insersort(std::vector<int> data, int aSize){
         data[j+1] = key; 
     }
 }
+
 void insertsort (int data[], int aSize){
     int key;
     for (int i = 1; i <= aSize; i++){
@@ -60,11 +62,7 @@ void qsort(int data[], int firstNumber, int lastNumber){
 
     //asigning pivot as a middle vlue of the three. 
     int pivot = data[(firstNumber+lastNumber)/2];
-    // cout <<"Pivot: "<< pivot<<" index: "<<(firstNumber+lastNumber)/2<<"\t";
-
     int left=firstNumber-1, right = lastNumber+1;
-    // cout<<"Left przed: "<<left;
-    // cout<<"\tRight przed: "<<right<<endl;
     
     while (1){
         while(pivot > data[++left]);
@@ -75,8 +73,6 @@ void qsort(int data[], int firstNumber, int lastNumber){
             break;
         }
     }
-    // cout<<"Left po przejsciu: "<<left;
-    // cout<<"\tRight po przejsciu: "<<right<<endl;
 
     if(right > firstNumber) {qsort(data, firstNumber, right);}
     if(left < lastNumber) {qsort(data, left, lastNumber);}
@@ -86,6 +82,10 @@ return;
 void bucketSort(vector<float> *data, int aSize){
     // TODO: Sprawdzić czy da się alokować aSize 1000000
     vector<float> bucket[1000000];
+    if (aSize < 500000){
+        bucket->clear();
+        vector<float> bucket[aSize];
+    }
     // Przydzielamy liczby do odpowiednich wiaderek. 
     for (int i=0; i < aSize; i++)
     {
@@ -134,9 +134,9 @@ void mixedBucket(int data[], int aSize){
 
 void mixedBucket(int data[], int aSize){
     vector<float> Positive;
-    Positive.reserve(1000000);
+    Positive.reserve(aSize);
     vector<float> Negative;
-    Negative.reserve(1000000);
+    Negative.reserve(aSize);
     
     for (int i=0; i<aSize; i++){
         if (data[i] < 0)
