@@ -1,6 +1,6 @@
 
 #define N_MAX 65000
-#define N_RUNS 100
+#define N_RUNS 1000
 #define INPUT_FILE "data/liczby.txt"
 #define SORTED_FILE "data/posortowane_bucket.txt"
 #define TIME_FILE "time/bucketTime.csv"

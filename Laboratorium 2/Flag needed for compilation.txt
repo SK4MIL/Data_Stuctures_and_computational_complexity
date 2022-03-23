@@ -1,0 +1,2 @@
+In windows: 
+"-Wl,--stack,28435456"
