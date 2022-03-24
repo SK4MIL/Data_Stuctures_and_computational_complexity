@@ -5,10 +5,6 @@
 #include <vector>
 #include <algorithm>
 
-
-#define N_MAX 65000
-
-
 using namespace std;
 
 void bbSort ( int data[], int aSize);

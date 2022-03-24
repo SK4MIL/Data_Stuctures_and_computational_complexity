@@ -108,30 +108,6 @@ void bucketSort(vector<float> *data, int aSize){
 
 }
 
-/*
-void mixedBucket(int data[], int aSize){
-    vector<float>* Positive = new vector<float>[1000000];
-    vector<float>* Negative = new vector<float>[1000000];
-    
-    for (int i=0; i<aSize; i++){
-        if (data[i] < 0)
-            Negative->push_back(data[i]*-1);
-        else
-            Positive->push_back(data[i]);
-    }
-
-    bucketSort(Negative, (int)Negative->size());
-    bucketSort(Positive, (int)Positive->size());
-   
-    for (int i=0; i < Negative->size(); i++){
-        data[i] = -1 * (Negative->at(Negative->size() -1 - i));
-    }
-    for (int i=Negative->size(); i<aSize; i++){
-        data[i] = Positive->at(i - Negative->size());
-    }
-}
-*/
-
 void mixedBucket(int data[], int aSize){
     vector<float> Positive;
     Positive.reserve(aSize);
@@ -155,8 +131,6 @@ void mixedBucket(int data[], int aSize){
         data[i] = Positive[i - Negative.size()];
     }
 }
-
-
 
 // void mgsort(int data[], int firstNumber, int lastNumber){
 //     int middle;
