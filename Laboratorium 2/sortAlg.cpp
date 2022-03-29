@@ -18,19 +18,6 @@ void bbSort ( int data[], int aSize){
     return;
 };
 
-void insersort(std::vector<int> data, int aSize){
-    int key;
-    for (int i = 1; i <= aSize; i++){
-        key = data[i];
-        int j = i-1;
-        while( j >= 0 && data[j] > key){
-            data[j+1]=data[j];
-            j = j-1;
-        }
-        data[j+1] = key; 
-    }
-}
-
 void insertsort (int data[], int aSize){
     int key;
     for (int i = 1; i <= aSize; i++){
