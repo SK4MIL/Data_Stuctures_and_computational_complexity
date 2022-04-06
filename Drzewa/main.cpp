@@ -1,7 +1,12 @@
 
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include <string>
+using namespace std;
 #include "defines.h"
 
-using namespace std;
+
 
 int main(){
     //check if you want to save sorted array into a csv file.
