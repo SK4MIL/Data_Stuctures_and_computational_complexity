@@ -3,8 +3,10 @@
 #include <fstream>
 #include <time.h>
 #include <string>
-using namespace std;
+
 #include "defines.h"
+using namespace std;
+
 
 
 
@@ -13,7 +15,7 @@ int main(){
     int RANGE[] = {10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
 
     //int * toSort = new int[1000000];
-    int toSort[1000][1000];
+    int toSort[100][100];
     // time measuring
     time_t start, end;
     double meanRunTime = 0.0;
@@ -38,11 +40,11 @@ int main(){
         int x, row=0;;
         while ( inFile >> x && row <= RANGE[r]){
             // if it's a number save it to toSort array.
-            for (int col =0; col < RANGE[r]; col++);{
-                if (row == col) x=0;
+            for (int col =0; col < RANGE[r]; col++){
+                if (row == col){x=0;};
                 toSort[row][col]=x;
             }
-            iter++;
+            row++;
             // check if next character is a number or a comma, if so skip
             if(inFile.peek() == ','){inFile.ignore();};
         };
@@ -76,14 +78,14 @@ int main(){
 outFile.close();
 
 //print sorted array
- for (int l = 0; l<RANGE[1]; l++){
-     for (int col =0; col < RANGE[r]; col++){
-    std::cout<<toSort[l][col]<<" : "<<l<<" , "<<col<<"\t ";
+ for (int l = 0; l<RANGE[0]; l++){
+     for (int col =0; col < RANGE[0]; col++){
+        std::cout<<toSort[l][col]<<" ";//<<" : "<<l<<" , "<<col<<"\t ";
      }
-
+     cout<<"\n";
   }
 
-delete [] toSort;
+//delete [] toSort;
 system("pause");
 return 0;
 }
