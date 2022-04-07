@@ -12,8 +12,9 @@ int main(){
     //check if you want to save sorted array into a csv file.
     int RANGE[] = {10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
 
-    int * toSort = new int[1000000];
-    // time
+    //int * toSort = new int[1000000];
+    int toSort[1000][1000];
+    // time measuring
     time_t start, end;
     double meanRunTime = 0.0;
 
@@ -26,7 +27,7 @@ int main(){
         outFile << "Zakres, Czas trwania, Liczba iteracji"<< endl;  
     }
     f.close();
-     for (int r =0; r <=16; r++){
+     for (int r =0; r <=0; r++){
     //for (int r = 16; r >= 0; r--){
         for (int i = 0; i < N_RUNS; i++)
         {    
@@ -34,10 +35,13 @@ int main(){
         std::fstream inFile;
         inFile.open(INPUT_FILE);
         if (!inFile.is_open()){ std::cout<<"ERROR";return -1;};
-        int x, iter=0;;
-        while ( inFile >> x && iter <= RANGE[r]){
+        int x, row=0;;
+        while ( inFile >> x && row <= RANGE[r]){
             // if it's a number save it to toSort array.
-            toSort[iter]=x;
+            for (int col =0; col < RANGE[r]; col++);{
+                if (row == col) x=0;
+                toSort[row][col]=x;
+            }
             iter++;
             // check if next character is a number or a comma, if so skip
             if(inFile.peek() == ','){inFile.ignore();};
@@ -72,9 +76,12 @@ int main(){
 outFile.close();
 
 //print sorted array
-//  for (int l = 0; l<RANGE[1]; l++){
-//     std::cout<<toSort[l]<<" : "<<l<<"\t ";
-//  }
+ for (int l = 0; l<RANGE[1]; l++){
+     for (int col =0; col < RANGE[r]; col++){
+    std::cout<<toSort[l][col]<<" : "<<l<<" , "<<col<<"\t ";
+     }
+
+  }
 
 delete [] toSort;
 system("pause");
