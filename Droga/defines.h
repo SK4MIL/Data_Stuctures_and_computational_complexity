@@ -1,16 +1,17 @@
+#include <fstream>
+#include <time.h>
+#include <string>
 
-#define N_MAX 65000
-
-#define N_RUNS 10
+#define N_RUNS 100
 // Dostępne funkcje: bbSort;  insertsort; qsort; mixedBucket; heapSort;
 #define FUNKCJA mixedBucket
 //                  Z jakiego pliku pobierać dane
-#define INPUT_FILE "data/liczby.txt"
+#define INPUT_FILE "data/matrix.txt"
 //      Czy zapisać posortowaną tablice. 
-#define SAVE 0
+#define SAVE 1
 //                  W jakim pliku zapisać posortowane dane
-#define SORTED_FILE "data/posortowane_bucket2.txt"
+#define OUTPUT_FILE "time/path.csv"
 //                  Gdzie zapisać zmierzone czasy.
-#define TIME_FILE "time/bucketTime2.csv"
+#define TIME_FILE "time/djikstra.csv"
 
 
