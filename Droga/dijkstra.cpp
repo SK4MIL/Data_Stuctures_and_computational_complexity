@@ -2,11 +2,10 @@
 #include "dijkstra.h"
 #include "defines.h"
 
-int miniDist(int distance[], bool Tset[]) // finding minimum distance
+int miniDist(int distance[], bool Tset[], int length) // finding minimum distance
 {
     int minimum=INT_MAX,ind;
-              
-    for(int k=0;k<6;k++) 
+    for(int k=0;k<length;k++) 
     {
         if(Tset[k]==false && distance[k]<=minimum)      
         {
@@ -17,13 +16,13 @@ int miniDist(int distance[], bool Tset[]) // finding minimum distance
     return ind;
 }
 
-void DijkstraAlgo(int **graph,int src) // adjacency matrix 
+void DijkstraAlgo(int **graph,int src, int length) // adjacency matrix 
 {
-    int distance[1000]; // // array to calculate the minimum distance for each node                             
-    bool Tset[1000];// boolean array to mark visited and unvisited for each node
+    int distance[length]; // // array to calculate the minimum distance for each node                             
+    bool Tset[length];// boolean array to mark visited and unvisited for each node
     
      
-    for(int k = 0; k<6; k++)
+    for(int k = 0; k<length; k++)
     {
         distance[k] = INT_MAX;
         Tset[k] = false;    
@@ -31,11 +30,11 @@ void DijkstraAlgo(int **graph,int src) // adjacency matrix
     
     distance[src] = 0;   // Source vertex distance is set 0               
     
-    for(int k = 0; k<6; k++)                           
+    for(int k = 0; k<length; k++)                           
     {
-        int m=miniDist(distance,Tset); 
+        int m=miniDist(distance, Tset, length); 
         Tset[m]=true;
-        for(int k = 0; k<6; k++)                  
+        for(int k = 0; k<length; k++)                  
         {
             // updating the distance of neighbouring vertex
             if(!Tset[k] && graph[m][k] && distance[m]!=INT_MAX && distance[m]+graph[m][k]<distance[k])
@@ -53,9 +52,10 @@ void DijkstraAlgo(int **graph,int src) // adjacency matrix
     }
     f.close();
 
-    for(int k = 0; k<1000; k++)                      
+    for(int k = 0; k<length; k++)                      
     { 
         //string str=65+k; 
         outFile <<k<<", "<<distance[k]<<endl;;
     }
+    outFile.close();
 }

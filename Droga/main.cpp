@@ -12,8 +12,8 @@ int main(){
     //cout<<"dzialam"<<endl;
     //int * toSort = new int[1000000];
     //int adjMatrix[1000][1000];
-    int rowCount=1000;
-    int colCount=1000;
+    int rowCount=1001;
+    int colCount=1001;
     int** adjMatrix = new int*[rowCount];
         for(int i = 0; i < rowCount; ++i)
         adjMatrix[i] = new int[colCount];
@@ -30,7 +30,7 @@ int main(){
         outFile << "Zakres, Czas trwania, Liczba iteracji"<< endl;  
     }
     f.close();
-     for (int r =0; r <=13; r++){
+     for (int r =0; r <=12; r++){
     //for (int r = 16; r >= 0; r--){
         //printf("Macierz dla zakresu %d:\n", RANGE[r]);
         for (int i = 0; i < N_RUNS; i++)
@@ -46,20 +46,31 @@ int main(){
                 if (x == ',') break;
                 if ( iter != j) adjMatrix[iter][j]=x;
                 else adjMatrix[iter][j]=0;
+
                 //printf("%d ", adjMatrix[iter][j]);  
             }
-            //printf("\n");
+           // printf("\n");
             // if it's a number save it to toSort array.
             iter++;
             // check if next character is a number or a comma, if so skip
             //if(inFile.peek() == ','){inFile.ignore();};
         };
-        //close file access. 
+        //close file access.
         inFile.close();
+        for (int i=0; i<iter; i++){
+            for (int j=0; j<i; j++){
+                adjMatrix[j][i]=adjMatrix[i][j];
+            }
+        }
+        for (int i=0; i < iter; i++){
+            for (int j=0; j<iter; j++){
+                cout<< adjMatrix[i][j]<<" ";
+            }
+            cout<<endl;
+        }
         //time is measured only for the duration of the sorting algorithm
         time(&start);
-
-        DijkstraAlgo(adjMatrix,0);
+        DijkstraAlgo(adjMatrix, 0, (iter-1));
 
         time(&end);
 

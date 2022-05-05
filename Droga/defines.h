@@ -2,11 +2,11 @@
 #include <time.h>
 #include <string>
 
-#define N_RUNS 100
+#define N_RUNS 1
 // Dostępne funkcje: bbSort;  insertsort; qsort; mixedBucket; heapSort;
 #define FUNKCJA mixedBucket
 //                  Z jakiego pliku pobierać dane
-#define INPUT_FILE "data/matrix.txt"
+#define INPUT_FILE "data/liczby.txt"
 //      Czy zapisać posortowaną tablice. 
 #define SAVE 1
 //                  W jakim pliku zapisać posortowane dane
